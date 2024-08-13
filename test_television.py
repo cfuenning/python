@@ -1,13 +1,22 @@
-import unittest
-import television
+import pytest
+from television import *
 
-class TestTelevision(unittest.TestCase):
+class Test:
+    def setup_method(self):
+        self.tv1 = Television()
+
+    def teardown_method(self):
+        del self.tv1
 
     def test_init(self):
-        pass
+        assert self.tv1.__str__() = 'Power = False, Channel = 0, Volume = 0'
 
     def test_power(self):
-        pass
+        self.tv1.power()
+        assert self.tv1.__str__() = 'Power = True, Channel = 0, Volume = 0'
+
+        self.tv1.power()
+        assert self.tv1.__str__() = 'Power = False, Channel = 0, Volume = 0'
 
     def test_mute(self):
         pass
