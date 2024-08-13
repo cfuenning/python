@@ -5,7 +5,7 @@ class Television:
     MIN_CHANNEL: int = 0
     MAX_CHANNEL: int = 3
 
-    def __init__(self):
+    def __init__(self) -> None:
         '''
         Method that sets the default instance variables.
         '''
@@ -14,7 +14,7 @@ class Television:
         self.__volume: int = Television.MIN_VOLUME
         self.__channel: int = Television.MIN_CHANNEL
 
-    def power(self):
+    def power(self) -> None:
         '''
         Method that turns TV on and off by changing the value of status variable
         '''
@@ -24,7 +24,7 @@ class Television:
         else:
             self.__status = False
 
-    def mute(self):
+    def mute(self) -> None:
         '''
         Method that mutes and unmutes volume by changing the value of muted variable
         '''
@@ -35,7 +35,7 @@ class Television:
             else:
                 self.__muted = False
 
-    def channel_up(self):
+    def channel_up(self) -> None:
         '''
         Method that increases channel by 1 when TV is on. And if it is above max, changes channel to back to minimum
         '''
@@ -45,7 +45,7 @@ class Television:
             else:
                 self.__channel = Television.MIN_CHANNEL
 
-    def channel_down(self):
+    def channel_down(self) -> None:
         '''
         Method that decreases channel by 1 when TV is on. And if it is below min, changes channel to back to max
         '''
@@ -55,7 +55,7 @@ class Television:
             else:
                 self.__channel = Television.MAX_CHANNEL
 
-    def volume_up(self):
+    def volume_up(self) -> None:
         '''
         Method that resets mute variable and increases volume by 1 when TV is on. It does not go above volume max
         '''
@@ -64,7 +64,7 @@ class Television:
             if self.__volume < Television.MAX_VOLUME:
                 self.__volume += 1
 
-    def volume_down(self):
+    def volume_down(self) -> None:
         '''
         Method that resets mute variable and decreases volume by 1 when TV is on. It does not go below volume min
         '''
@@ -73,9 +73,10 @@ class Television:
             if self.__volume > Television.MIN_VOLUME:
                 self.__volume -= 1
 
-    def __str__(self):
+    def __str__(self) -> str:
         '''
-        Method that prints all output. Special output when mute variable is True
+        Method that prints all output for TV status. Special output when mute variable is True
+        :return: tv status
         '''
         if self.__muted:
             return f'Power = {self.__status}, Channel = {self.__channel}, Volume = {Television.MIN_VOLUME}'
