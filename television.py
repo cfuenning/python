@@ -6,12 +6,18 @@ class Television:
     MAX_CHANNEL: int = 3
 
     def __init__(self):
+        '''
+        Method that sets the default instance variables.
+        '''
         self.__status: bool = False
         self.__muted: bool = False
         self.__volume: int = Television.MIN_VOLUME
         self.__channel: int = Television.MIN_CHANNEL
 
     def power(self):
+        '''
+        Method that turns TV on and off by changing the value of status variable
+        '''
         if self.__status is False:
             self.__status = True
 
@@ -19,6 +25,9 @@ class Television:
             self.__status = False
 
     def mute(self):
+        '''
+        Method that mutes and unmutes volume by changing the value of muted variable
+        '''
         if self.__status:
             if self.__muted is False:
                 self.__muted = True
@@ -27,6 +36,9 @@ class Television:
                 self.__muted = False
 
     def channel_up(self):
+        '''
+        Method that increases channel by 1 when TV is on. And if it is above max, changes channel to back to minimum
+        '''
         if self.__status:
             if self.__channel < Television.MAX_CHANNEL:
                 self.__channel += 1
@@ -34,6 +46,9 @@ class Television:
                 self.__channel = Television.MIN_CHANNEL
 
     def channel_down(self):
+        '''
+        Method that decreases channel by 1 when TV is on. And if it is below min, changes channel to back to max
+        '''
         if self.__status:
             if self.__channel > Television.MIN_CHANNEL:
                 self.__channel -= 1
@@ -41,18 +56,27 @@ class Television:
                 self.__channel = Television.MAX_CHANNEL
 
     def volume_up(self):
+        '''
+        Method that resets mute variable and increases volume by 1 when TV is on. It does not go above volume max
+        '''
         if self.__status:
             self.__muted = False
             if self.__volume < Television.MAX_VOLUME:
                 self.__volume += 1
 
     def volume_down(self):
+        '''
+        Method that resets mute variable and decreases volume by 1 when TV is on. It does not go below volume min
+        '''
         if self.__status:
             self.__muted = False
             if self.__volume > Television.MIN_VOLUME:
                 self.__volume -= 1
 
     def __str__(self):
+        '''
+        Method that prints all output. Special output when mute variable is True
+        '''
         if self.__muted:
             return f'Power = {self.__status}, Channel = {self.__channel}, Volume = {Television.MIN_VOLUME}'
         else:
